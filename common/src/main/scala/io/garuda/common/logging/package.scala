@@ -11,7 +11,7 @@ package object logging {
   val ChannelContextKey: String = "channel"
 
   /**
-   * Key used to store the current [[io.garuda.common.authentication.System]]'s ID in the current thread's [[org.slf4j.MDC]].
+   * Key used to store the current [[io.garuda.common.authentication.RemoteSystem]]'s ID in the current thread's [[org.slf4j.MDC]].
    */
   val RemoteSystemIdContextKey: String = "remoteSystemId"
 }

@@ -1,5 +1,6 @@
 package io.garuda.common.session
 
+import io.garuda.common.authentication.RemoteSystem
 import io.garuda.common.spi.session.Session.State
 import io.garuda.common.spi.session.{Session, SessionChannelAdapter}
 import io.netty.channel.Channel
@@ -21,7 +22,7 @@ class SessionGroupSpec extends Specification with NoTimeConversions with Tags {
 
     override def currentState: State = State.Open
 
-    override def authenticatedSystem: Option[io.garuda.common.authentication.System] = None
+    override def authenticatedSystem: Option[RemoteSystem] = None
 
     override def close(): Unit = {}
 

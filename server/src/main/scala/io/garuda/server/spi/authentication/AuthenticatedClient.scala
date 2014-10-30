@@ -1,6 +1,6 @@
 package io.garuda.server.spi.authentication
 
-import io.garuda.common.authentication.System
+import io.garuda.common.authentication.RemoteSystem
 import io.garuda.server.session.SystemServerSessionConfig
 
 /**
@@ -12,7 +12,7 @@ import io.garuda.server.session.SystemServerSessionConfig
  */
 case class AuthenticatedClient(id: String,
                                systemSmppServerSessionConfig: Option[SystemServerSessionConfig])
-  extends System
+  extends RemoteSystem
 
 object AuthenticatedClient {
 

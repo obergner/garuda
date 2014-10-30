@@ -7,6 +7,7 @@ import com.typesafe.scalalogging.slf4j.Logging
 import io.garuda.codec.pdu._
 import io.garuda.codec.util.HexHelpers
 import io.garuda.codec.{ErrorCode, SmppPduDecoder, SmppPduFrameDecoder}
+import io.garuda.common.authentication.RemoteSystem
 import io.garuda.common.concurrent.CallerThreadExecutionContext
 import io.garuda.common.session.support.SessionListenerAdapter
 import io.garuda.common.spi.session.Session
@@ -274,7 +275,7 @@ class StateBasedServerSessionPduRequestProcessingSpec extends Specification with
 
         val sessionHasBeenBound = new CountDownLatch(1)
         val bindListener = new SessionListenerAdapter() {
-          override def sessionBound(session: Session, bindType: BindType, system: io.garuda.common.authentication.System): Unit = sessionHasBeenBound.countDown()
+          override def sessionBound(session: Session, bindType: BindType, system: RemoteSystem): Unit = sessionHasBeenBound.countDown()
         }
         objectUnderTest.addListener(bindListener)
 

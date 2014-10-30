@@ -8,7 +8,7 @@ import io.netty.util.AttributeKey
 package object authentication {
 
   /**
-   * [[AttributeKey]] to attache the remote [[System]] to the current [[io.netty.channel.Channel]].
+   * [[AttributeKey]] to attache the remote [[RemoteSystem]] to the current [[io.netty.channel.Channel]].
    */
-  val RemoteSystemAttributeKey: AttributeKey[System] = AttributeKey.valueOf("remoteSystem")
+  val RemoteSystemAttributeKey: AttributeKey[RemoteSystem] = AttributeKey.valueOf("remoteSystem")
 }

@@ -62,7 +62,7 @@ class StateBasedServerSession(val channel: Channel, config: ServerSessionConfig)
   def currentState: State = currentStateDelegate.state
 
   def authenticatedSystem: Option[AuthenticatedClient] = {
-    val system: System = channel.attr(RemoteSystemAttributeKey).get()
+    val system: RemoteSystem = channel.attr(RemoteSystemAttributeKey).get()
     if (system != null) Some(system.asInstanceOf[AuthenticatedClient]) else None
   }
 

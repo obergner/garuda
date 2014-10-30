@@ -7,7 +7,7 @@ import io.netty.channel.{ChannelHandlerContext, ChannelOutboundHandlerAdapter, C
 import org.slf4j.MDC
 
 /**
- * A [[ChannelOutboundHandlerAdapter]] that registers the ID of the current [[io.garuda.common.authentication.System]]
+ * A [[ChannelOutboundHandlerAdapter]] that registers the ID of the current [[io.garuda.common.authentication.RemoteSystem]]
  * and the current [[io.netty.channel.Channel]] in SLF4J's [[MDC]]. Upon request completion both datums will be removed.
  *
  * User: obergner

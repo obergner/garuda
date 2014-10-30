@@ -1,5 +1,6 @@
 package io.garuda.common.session.support
 
+import io.garuda.common.authentication.RemoteSystem
 import io.garuda.common.spi.session.Session
 import io.garuda.common.spi.session.Session.BindType
 
@@ -35,9 +36,9 @@ trait SessionListenerAdapter extends Session.Listener {
    *
    * @param session The [[Session]] that has been bound
    * @param bindType The [[Session.BindType]] this `session` has been bound as
-   * @param system The [[io.garuda.common.authentication.System]] representing the remote user
+   * @param system The [[RemoteSystem]] representing the remote user
    */
-  override def sessionBound(session: Session, bindType: BindType, system: io.garuda.common.authentication.System): Unit = {}
+  override def sessionBound(session: Session, bindType: BindType, system: RemoteSystem): Unit = {}
 
   /**
    * The [[Session]] `session` has been closed.

@@ -1,6 +1,7 @@
 package io.garuda.common.spi.session
 
 import io.garuda.codec.pdu._
+import io.garuda.common.authentication.RemoteSystem
 import io.garuda.common.spi.session.Session.Listener
 import io.netty.channel.Channel
 import io.netty.util.AttributeKey
@@ -116,9 +117,9 @@ object Session {
      *
      * @param session The [[Session]] that has been bound
      * @param bindType The [[Session.BindType]] this `session` has been bound as
-     * @param system The [[io.garuda.common.authentication.System]] representing the remote user
+     * @param system The [[RemoteSystem]] representing the remote user
      */
-    def sessionBound(session: Session, bindType: Session.BindType, system: io.garuda.common.authentication.System): Unit
+    def sessionBound(session: Session, bindType: Session.BindType, system: RemoteSystem): Unit
 
     /**
      * An attempt to bind/authenticate [[Session]] `session` has failed.
@@ -179,11 +180,11 @@ trait Session {
   def currentState: Session.State
 
   /**
-   * The remote [[io.garuda.common.authentication.System]] this [[Session]] has been bound to.
+   * The remote [[RemoteSystem]] this [[Session]] has been bound to.
    *
-   * @return The remote [[io.garuda.common.authentication.System]] this [[Session]] has been bound to
+   * @return The remote [[RemoteSystem]] this [[Session]] has been bound to
    */
-  def authenticatedSystem: Option[io.garuda.common.authentication.System]
+  def authenticatedSystem: Option[RemoteSystem]
 
   /**
    * Closes the underlying [[io.netty.channel.Channel]], effectively terminating this [[Session]].
@@ -236,7 +237,7 @@ trait Session {
     this.listeners.foreach(_.sessionOpened(this))
   }
 
-  protected[this] def fireSessionBound(bindType: Session.BindType, system: io.garuda.common.authentication.System): Unit = {
+  protected[this] def fireSessionBound(bindType: Session.BindType, system: io.garuda.common.authentication.RemoteSystem): Unit = {
     this.listeners.foreach(_.sessionBound(this, bindType, system))
   }
 
